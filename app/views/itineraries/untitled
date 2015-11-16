@@ -1,0 +1,38 @@
+<div class="form-group"> 
+
+  <%= f.input :country_id, collection: @countries, label_method: :name, value_method: :id,label: "Country", include_blank: true,selected: @itinerary.country_id %> 
+
+</div>
+
+  
+<div class="form-group"> 
+
+        <%= f.input :city_id, collection: Country.all, as: :grouped_select, group_method: :cities %>
+       
+    
+  
+ </div>
+
+
+
+ 
+ 
+ def add_site 
+
+  @sitename = params[:name] 
+  @sitelat =  params[:latitude] 
+  @sitelong =  params[:longitude] 
+  @siteimg =  params[:image_url] 
+  @sitecategory =  params[:category] 
+
+ end 
+
+
+link_to addsite_path(:name => @topfiveresponse[j]["businesses"][i]["name"],:latitude => @topfiveresponse[j]["businesses"][i]["location"]["coordinate"]["latitude"],:longitude => @topfiveresponse[j]["businesses"][i]["location"]["coordinate"]["longitude"],:image_url => @topfiveresponse[j]["businesses"][i]["url"], :category => @topfiveresponse[j]["businesses"][i]["categories"][0][0] )
+
+
+  <p class="btn btn-default"><%= link_to 'Delete',itinerary_path, method: :delete, data: { confirm: "Are you sure ?"} %>
+									      	</p>
+
+									      	 <p class="btn btn-default"><%= link_to 'Edit', edit_itinerary_path %>
+							 		      </p>

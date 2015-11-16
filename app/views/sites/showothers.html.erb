@@ -1,0 +1,60 @@
+<% @src = "search" %>
+
+<p><% @itinerary_id = params[:id] %></p>
+ <div id=site_show class="transitions-enabled">
+
+  	 <div  class="panel panel-default">
+
+
+  	 	 <div  class="panel-heading ">
+					  <h2> Other Recommendations <% for i  in 0..@sel_category_arrlen -1  %> </h2>
+       			<%= @sel_category[i]  %> 
+       			<% end %>
+       			<%= @city.name.titleize %> , <%= @country.name.titleize %> 
+				</div>
+
+				<div class="panel-body">
+
+
+						<% for j in 0..@remainingresponsearrlength -1 %>
+						<% @remainingelementsarrlength = @remainingresponse[j]["businesses"].length %>
+						<% for i in 0..(@remainingelementsarrlength - 1)  %>
+						  <div class="site">
+
+							<%= image_tag(@remainingresponse[j]["businesses"][i]["image_url"]) %> 
+							<center>
+							<h3><%= link_to  @remainingresponse[j]["businesses"][i]["name"], @remainingresponse[j]["businesses"][i]["url"] %></h3> 
+
+								  <%= link_to addsite_path(:itinerary_id => @itinerary_id, :name => @remainingresponse[j]["businesses"][i]["name"],:latitude => @remainingresponse[j]["businesses"][i]["location"]["coordinate"]["latitude"],:longitude => @remainingresponse[j]["businesses"][i]["location"]["coordinate"]["longitude"],:image_url => @remainingresponse[j]["businesses"][i]["image_url"],:url => @remainingresponse[j]["businesses"][i]["url"], :src => @src), class: 'btn btn-default' do %>
+
+								    <span class="glyphicon glyphicon-plus"></span>
+								    Add Site
+								  <% end %>
+
+								 </center>
+
+							   </div>
+
+						<% end %>
+						<% end %>
+
+
+				</div>
+
+				
+				<div class="panel-footer">
+
+
+								<div class="row">
+										<div class="col-md-6">
+
+											 <div class="btn-group.pull-right"> <%= link_to 'Go Back', searchsite_path %>
+											 </div>
+										</div>
+									</div>
+
+
+				</div>
+
+			</div>
+		</div>

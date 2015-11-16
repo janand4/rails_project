@@ -1,0 +1,73 @@
+<div id=itinerary_show class="row">
+  <div class="col-md-8 col-md-offset-2">
+  	 <div  class="panel panel-default">
+
+  	 	 <div  class="panel-heading">
+						 <h1>Edit Itinerary</h1>
+					
+				</div>
+
+				<div class="panel-body"  >	 
+
+							<td>
+               <h3>List of sites </h3>
+  							
+                <%  i = 0 %>
+                <% @sitesarray.each do |site| %>
+								 <div class="itinerary_site">
+							   <%  output = site.scan(/"([^"]*)"/) %>
+
+							   <% itinerarysiteid = @siteidarray[i] %>
+                 
+							   <center><p><%= image_tag (output[3][0]) %></p> </center>
+							   
+							   <center><h3><%= link_to output[0][0],output[4][0] %> </h3></center>
+
+		              <center><td>
+								  <%= link_to deletesite_path(:itinerary_id => params[:id] ,:sitename => output[0][0] , :itinerarysite_id => itinerarysiteid ),class: 'btn btn-default' do %>
+										   <span class="glyphicon glyphicon-trash"></span>
+										    Delete Site
+									<% end %> 
+									</td></center>
+						      </div>
+									     <% 	i +=1  %>
+		             <% end %>
+ 								</td> 
+ 								
+
+ 								<td>
+								  <center><%= link_to searchsite_path(:itinerary_id => params[:id] ),class: 'btn btn-default' do %>
+										   <span class="glyphicon glyphicon-plus"></span>
+										    Add a new site
+									<% end %> </center>
+									</td>
+
+
+		</div>
+
+							<div class="panel-footer"  >
+								<td>
+						    <center> <strong> Current Image </strong>
+					   		<br>
+					   		<%= image_tag @itinerary.image.url(:medium) %>
+					   		<br> </center>
+
+								<%= render 'form' %>
+ 								</td> 
+							</div>
+
+
+				  </div>
+
+
+	 			</div>
+
+</div>
+
+
+</div>
+
+
+
+
+             

@@ -1,0 +1,35 @@
+  <p>
+  <%= form_for :trip, url: {action: "show"}, html: {method: "get"} do |f| %>
+ 
+
+  <p>
+  <%= image_tag("country.jpg" , height: '50', width: '50') %>
+  <%=  f.label "Pick a country" %> <br> <br>
+  <%= f.select :country_id, options_for_select(@countries.collect { |country| [country.name.titleize, country.id] }, 1), {}, { id: 'countries_select' } %> <br>
+  </p>
+
+  <br>
+  <br>
+
+  <p>
+<%= image_tag("destination.jpg" , height: '50', width: '50') %> 
+  <%= f.label "Pick a city" %> <br> <br>
+  <%= f.select :city_id, options_for_select(@cities.collect { |city| [city.name.titleize, city.id] }, 0), {}, { id: 'cities_select' } %> <br>
+  </p>
+
+  <br>
+  <br>
+  
+  <p>
+   <%= image_tag("selection.png" , height: '50', width: '50') %>
+   <%= f.label "Pick your interests " %> <br>
+   <% @categories.each do |category| %>
+   <p> <%= check_box_tag 'activated[]', category.id %>
+     <%= label_tag category.name %></p>
+  <% end %>
+  </p>
+
+
+<p>   <%= f.submit "Suprise Me !" ,class: "btn btn-primary" %> </p>
+
+  <% end %>

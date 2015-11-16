@@ -1,0 +1,12 @@
+I"Þ(function() {
+  $(function() {
+    return $('#itineraries').imagesLoaded(function() {
+      return $('#itineraries').masonry({
+        itemSelector: '.box',
+        isFitWidth: true
+      });
+    });
+  });
+
+}).call(this);
+:ET

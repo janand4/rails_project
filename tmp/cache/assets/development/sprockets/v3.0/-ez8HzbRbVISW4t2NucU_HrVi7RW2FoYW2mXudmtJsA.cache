@@ -1,0 +1,17 @@
+I"Ê(function() {
+  $(function() {});
+
+  +$('#itineraries').imageLoaded(function() {});
+
+  +$('itineraries').masonry;
+
+  +({
+    itemSelector: '.box'
+  });
+
+  +({
+    isFitWidth: true
+  });
+
+}).call(this);
+:ET

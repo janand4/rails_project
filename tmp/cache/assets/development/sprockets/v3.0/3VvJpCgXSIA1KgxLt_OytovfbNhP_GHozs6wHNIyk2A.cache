@@ -1,0 +1,28 @@
+I"ú(function() {
+  jQuery(function() {
+    var cities;
+    cities = $('#city_id').html();
+    return $('#property_prop_type_id').change(function() {
+      var country, escaped_country, options;
+      country = $('#country_id :selected').text();
+      escaped_country = country.replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
+      options = $(cities).filter("optgroup[label='" + escaped_country + "']").html();
+      if (options) {
+        return $('#city_id').html(options);
+      } else {
+        return $('#city_id').empty();
+      }
+    });
+  });
+
+  $(function() {
+    return $('#itineraries').imagesLoaded(function() {
+      return $('#itineraries').masonry({
+        itemSelector: '.box',
+        isFitWidth: true
+      });
+    });
+  });
+
+}).call(this);
+:ET
